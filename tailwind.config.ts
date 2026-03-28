@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Fraunces', 'serif'],
-        body: ['DM Sans', 'sans-serif'],
+        display: ['Outfit', 'sans-serif'],
+        body: ['Plus Jakarta Sans', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

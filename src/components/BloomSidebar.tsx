@@ -5,10 +5,10 @@ import { toast } from "sonner";
 
 const navItems = [
   { label: "Chat", path: "/chat", icon: MessageSquare, step: 0 },
-  { label: "1. Plan Assignment", path: "/plan", icon: ListChecks, step: 1 },
-  { label: "2. Personal Calendar", path: "/calendar", icon: Calendar, step: 2 },
-  { label: "3. Delegate Tasks", path: "/delegate", icon: Users, step: 3 },
-  { label: "4. Gantt Chart", path: "/gantt", icon: BarChart3, step: 4 },
+  { label: "Plan Assignment", path: "/plan", icon: ListChecks, step: 1 },
+  { label: "Personal Calendar", path: "/calendar", icon: Calendar, step: 2 },
+  { label: "Delegate Tasks", path: "/delegate", icon: Users, step: 3 },
+  { label: "Gantt Chart", path: "/gantt", icon: BarChart3, step: 4 },
   { label: "Flower Progress", path: "/flower", icon: Flower2, step: 5 },
 ];
 
