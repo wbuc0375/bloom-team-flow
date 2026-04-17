@@ -8,7 +8,8 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import BloomLayout from "@/components/BloomLayout";
 import Index from "./pages/Index";
-import Auth from "./pages/Auth";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Chat from "./pages/Chat";
 import PlanAssignment from "./pages/PlanAssignment";
 import PersonalCalendar from "./pages/PersonalCalendar";
@@ -33,7 +34,8 @@ const App = () => (
           <BloomProvider>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/auth" element={<Auth />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
               <Route path="/chat" element={protect(<Chat />)} />
               <Route path="/plan" element={protect(<PlanAssignment />)} />
               <Route path="/calendar" element={protect(<PersonalCalendar />)} />
