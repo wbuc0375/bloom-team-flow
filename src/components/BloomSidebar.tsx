@@ -1,6 +1,7 @@
-import { NavLink, useLocation } from "react-router-dom";
-import { MessageSquare, ListChecks, Calendar, Users, BarChart3, Flower2, Copy } from "lucide-react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { MessageSquare, ListChecks, Calendar, Users, BarChart3, Flower2, Copy, LogOut } from "lucide-react";
 import { useBloom } from "@/contexts/BloomContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 
 const navItems = [
@@ -14,7 +15,16 @@ const navItems = [
 
 const BloomSidebar = () => {
   const { projectName, currentUser, groupCode } = useBloom();
+  const { user, signOut } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/auth", { replace: true });
+  };
+
+  const displayName = (user?.user_metadata?.display_name as string) || user?.email?.split("@")[0] || currentUser;
 
   return (
     <aside className="w-64 min-h-screen bg-sidebar flex flex-col border-r border-sidebar-border shrink-0">
@@ -31,12 +41,19 @@ const BloomSidebar = () => {
       <div className="px-5 py-3 border-b border-sidebar-border">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-sidebar-primary flex items-center justify-center text-sidebar-primary-foreground text-sm font-bold">
-            {currentUser[0]}
+            {displayName[0]?.toUpperCase()}
           </div>
-          <div>
-            <p className="text-sm font-medium text-sidebar-foreground">{currentUser} Smith</p>
-            <p className="text-xs text-sidebar-foreground/50">Online</p>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-sidebar-foreground truncate">{displayName}</p>
+            <p className="text-xs text-sidebar-foreground/50 truncate">{user?.email ?? "Online"}</p>
           </div>
+          <button
+            onClick={handleSignOut}
+            title="Sign out"
+            className="text-sidebar-foreground/60 hover:text-sidebar-foreground transition-colors"
+          >
+            <LogOut className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
