@@ -7,7 +7,7 @@ const Index = () => {
   const { user, loading } = useAuth();
   useEffect(() => {
     if (loading) return;
-    navigate(user ? "/chat" : "/auth", { replace: true });
+    navigate(user ? "/chat" : "/login", { replace: true });
   }, [navigate, user, loading]);
   return null;
 };

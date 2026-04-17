@@ -21,7 +21,7 @@ const BloomSidebar = () => {
 
   const handleSignOut = async () => {
     await signOut();
-    navigate("/auth", { replace: true });
+    navigate("/login", { replace: true });
   };
 
   const displayName = (user?.user_metadata?.display_name as string) || user?.email?.split("@")[0] || currentUser;
