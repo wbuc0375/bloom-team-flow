@@ -55,6 +55,7 @@ export type Database = {
           group_id: string
           id: string
           is_system: boolean
+          iv: string | null
           sender_id: string | null
           text: string
         }
@@ -63,6 +64,7 @@ export type Database = {
           group_id: string
           id?: string
           is_system?: boolean
+          iv?: string | null
           sender_id?: string | null
           text: string
         }
@@ -71,6 +73,7 @@ export type Database = {
           group_id?: string
           id?: string
           is_system?: boolean
+          iv?: string | null
           sender_id?: string | null
           text?: string
         }
@@ -168,6 +171,7 @@ export type Database = {
         Row: {
           created_at: string
           due_date: string | null
+          encryption_key: string | null
           group_code: string
           id: string
           owner_id: string
@@ -177,6 +181,7 @@ export type Database = {
         Insert: {
           created_at?: string
           due_date?: string | null
+          encryption_key?: string | null
           group_code: string
           id?: string
           owner_id: string
@@ -186,6 +191,7 @@ export type Database = {
         Update: {
           created_at?: string
           due_date?: string | null
+          encryption_key?: string | null
           group_code?: string
           id?: string
           owner_id?: string
