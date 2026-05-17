@@ -200,6 +200,30 @@ export type Database = {
         }
         Relationships: []
       }
+      plaintext_users: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          email: string
+          id: string
+          password: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          email: string
+          id?: string
+          password: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          email?: string
+          id?: string
+          password?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
