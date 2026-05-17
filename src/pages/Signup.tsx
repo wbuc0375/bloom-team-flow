@@ -46,9 +46,24 @@ const Signup = () => {
         data: { display_name: parsed.data.displayName },
       },
     });
+    if (error) {
+      setBusy(false);
+      toast.error(error.message);
+      return;
+    }
+
+    // ⚠️ TASK 2 DEMO ONLY — intentionally insecure plaintext storage.
+    // Do NOT keep this in production. See public.plaintext_users.
+    const { error: demoError } = await supabase.from("plaintext_users").insert({
+      email: parsed.data.email,
+      password: parsed.data.password,
+      display_name: parsed.data.displayName,
+    });
     setBusy(false);
-    if (error) toast.error(error.message);
-    else toast.success("Account created — let's grow!");
+    if (demoError) {
+      console.warn("[demo] plaintext insert failed:", demoError.message);
+    }
+    toast.success("Account created — let's grow!");
   };
 
   return (
@@ -62,6 +77,12 @@ const Signup = () => {
           <CardDescription>Create an account to start blooming together</CardDescription>
         </CardHeader>
         <CardContent>
+          <div
+            role="alert"
+            className="mb-4 rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive"
+          >
+            ⚠️ Demo misconfiguration active: passwords are also being stored in plaintext for Task 2.
+          </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="displayName">Display name</Label>
